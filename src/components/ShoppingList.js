@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import ItemForm from "./ItemForm";
 import Filter from "./Filter";
 import Item from "./Item";
-import { v4 as uuid } from "uuid";
 
 function ShoppingList({ items, setItems }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [search, setSearch] = useState("")
-  const [newItemName, setNewItemName] = useState("")
-  const [newItemCat, setNewItemCat] = useState("Produce")
-  // const [newItem, setNewItem] = useState({})
+  const [itemName, setItemName] = useState("")
+  const [itemCategory, setItemCategory] = useState("Produce")
+  const [newItem, setNewItem] = useState({})
 
 
   function handleCategoryChange(event) {
@@ -21,23 +20,16 @@ function ShoppingList({ items, setItems }) {
   }
 
   function handleItemNameChange(event){
-    setNewItemName(event.target.value)
+    setItemName(event.target.value)
   }
 
   function handleItemCatChange(event){
-    setNewItemCat(event.target.value)
-    console.log(newItemCat)
+    setItemCategory(event.target.value)
   }
 
-  function onItemFormSubmit(event){
-    event.preventDefault()
-    const newItem = {
-      id: uuid(),
-      name: newItemName,
-      category: newItemCat
-    }
-    console.log(event)
-    const itemsArray = [...items, newItem]
+  function onItemFormSubmit(formItem){//needs to pass in the formItem somehow
+    console.log(formItem)
+    const itemsArray = [...items, formItem]
     setItems(itemsArray)
   }
 
@@ -61,13 +53,13 @@ function ShoppingList({ items, setItems }) {
   return (
     <div className="ShoppingList">
       <ItemForm 
-        newItemName = {newItemName}
-        newItemCat = {newItemCat}
+        itemName = {itemName}
+        itemCategory = {itemCategory}
         handleNewItemNameChange={handleItemNameChange}
         handleNewItemCatChange={handleItemCatChange}
         onItemFormSubmit={onItemFormSubmit}
-        // newItem = {newItem}
-        // setNewItem ={setNewItem}
+        newItem = {newItem}
+        setNewItem ={setNewItem}
       />
       <Filter 
         onCategoryChange={handleCategoryChange} 
