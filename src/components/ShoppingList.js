@@ -6,10 +6,8 @@ import Item from "./Item";
 function ShoppingList({ items, setItems }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [search, setSearch] = useState("")
-  const [itemName, setItemName] = useState("")
-  const [itemCategory, setItemCategory] = useState("Produce")
-  const [newItem, setNewItem] = useState({})
-
+  // const [itemName, setItemName] = useState("")
+  // const [itemCategory, setItemCategory] = useState("Produce")
 
   function handleCategoryChange(event) {
     setSelectedCategory(event.target.value);
@@ -19,13 +17,13 @@ function ShoppingList({ items, setItems }) {
     setSearch(event.target.value)
   }
 
-  function handleItemNameChange(event){
-    setItemName(event.target.value)
-  }
+  // function handleItemNameChange(event){
+  //   setItemName(event.target.value)
+  // }
 
-  function handleItemCatChange(event){
-    setItemCategory(event.target.value)
-  }
+  // function handleItemCatChange(event){
+  //   setItemCategory(event.target.value)
+  // }
 
   function onItemFormSubmit(formItem){//needs to pass in the formItem somehow
     console.log(formItem)
@@ -53,13 +51,11 @@ function ShoppingList({ items, setItems }) {
   return (
     <div className="ShoppingList">
       <ItemForm 
-        itemName = {itemName}
-        itemCategory = {itemCategory}
-        handleNewItemNameChange={handleItemNameChange}
-        handleNewItemCatChange={handleItemCatChange}
+        // itemName = {itemName}
+        // itemCategory = {itemCategory}
+        // handleNewItemNameChange={handleItemNameChange}
+        // handleNewItemCatChange={handleItemCatChange}
         onItemFormSubmit={onItemFormSubmit}
-        newItem = {newItem}
-        setNewItem ={setNewItem}
       />
       <Filter 
         onCategoryChange={handleCategoryChange} 
